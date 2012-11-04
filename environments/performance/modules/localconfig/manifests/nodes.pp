@@ -108,17 +108,6 @@ node 'db2' inherits dbnode {
   }
 }
 
-##################
-## SEARCH NODES ##
-##################
-
-node 'search0' inherits basenode {
-  class { 'elasticsearch':
-    host_address  => $localconfig::search_hosts_internal[0]['host'],
-    host_port     => $localconfig::search_hosts_internal[0]['port'],
-  }
-}
-
 #################
 ## LOAD DRIVER ##
 #################
