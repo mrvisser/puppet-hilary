@@ -1,5 +1,5 @@
 #!/bin/bash
-# This bash script holds the commands to scrub a cassandra node.
+# This bash script holds the commands to scrub and restore a cassandra node.
 
 # Stop cassandra.
 /sbin/service cassandra stop
@@ -12,8 +12,8 @@ if [ -f /etc/init.d/opscenterd ] ; then
     /etc/init.d/opscenterd stop
 fi
 
-echo 'Sleeping 15s for db service shutdown'
-sleep 15
+echo 'Sleeping 5s for db service shutdown'
+sleep 5
 
 # bring down the axe
 killall -9 java
@@ -24,7 +24,7 @@ rm -rf /var/log/opscenter-agent/*
 chown -R cassandra:cassandra /var/log/cassandra
 
 # Delete all the data
-find /var/lib/cassandra/data/oae/ -regex "^.*\.db$" -maxdepth 2 -exec rm -rf {} \;
+rm -rf /var/lib/cassandra/data/oae
 rm -rf /var/lib/cassandra/commitlog/*
 chown -R cassandra:cassandra /var/lib/cassandra
 

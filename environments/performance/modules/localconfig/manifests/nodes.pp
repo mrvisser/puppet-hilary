@@ -3,52 +3,20 @@
 ## WEB PROXY ##
 ###############
 
-node 'web0' inherits basenode {
-  class { 'nginx':
-    tenantsHash =>  {
-        'global' => {
-            'host' => 'global.oae-performance.sakaiproject.org',
-            'port' => 2000
-        },
-
-
-        't1' => {
-            'host' => 't1.oae-performance.sakaiproject.org',
-            'port' => 2001
-        },
-        't2' => {
-            'host' => 't2.oae-performance.sakaiproject.org',
-            'port' => 2002
-        },
-        't3' => {
-            'host' => 't3.oae-performance.sakaiproject.org',
-            'port' => 2003
-        },
-        't4' => {
-            'host' => 't4.oae-performance.sakaiproject.org',
-            'port' => 2004
-        },
-        't5' => {
-            'host' => 't5.oae-performance.sakaiproject.org',
-            'port' => 2005
-        }
-    },
-    internal_app_ips  => $localconfig::app_hosts_internal,
-  }
-}
-
+node 'web0' inherits webnode { }
 
 
 ###############
 ## APP NODES ##
 ###############
 
-node 'app0' inherits appnode {
-  # App 0 also hosts redis
-  class { 'redis': }
-}
+node 'app0' inherits appnode { }
 
 node 'app1' inherits appnode { }
+
+node 'app2' inherits appnode { }
+
+node 'app3' inherits appnode { }
 
 
 
@@ -117,6 +85,14 @@ node 'search0' inherits basenode {
     host_address  => $localconfig::search_hosts_internal[0]['host'],
     host_port     => $localconfig::search_hosts_internal[0]['port'],
   }
+}
+
+#################
+## REDIS NODES ##
+#################
+
+node 'cache0' inherits basenode {
+  class { 'redis': }
 }
 
 #################
