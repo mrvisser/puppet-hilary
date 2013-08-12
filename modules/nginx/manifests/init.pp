@@ -8,6 +8,7 @@ class nginx (
     $owner                          = 'nginx',
     $group                          = 'nginx',
     $nginx_dir                      = '/etc/nginx',
+    $base_read_timeout              = 5,
     $rate_limit_api                 = true,
     $ssl_policy                     = 'redirect_http',
     $ssl_default_crt_source         = 'puppet:///modules/localconfig/ssl/default/server.crt',
