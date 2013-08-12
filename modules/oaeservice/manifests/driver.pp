@@ -43,4 +43,8 @@ class oaeservice::driver {
 
     # Install Nginx, so we have a place to put the data
     package { 'nginx': }
+    service { 'nginx':
+        ensure  => running,
+        require => Package['nginx'],
+    }
 }
