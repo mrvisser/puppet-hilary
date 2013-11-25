@@ -13,6 +13,15 @@ class oaeservice::deps::pp {
   ]
   package { $pp_packages: ensure => installed }
 
+  $pdf2html_packages = [
+    'libpng12-0',
+    'libjpeg62',
+    'libopenjpeg2',
+    'fontconfig',
+    'poppler-data',
+    'ttfautohint'
+  ]
+
   # Download and unpack pdf2html archive
   archive { 'pdf2html':
     ensure        => present,
