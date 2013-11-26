@@ -21,7 +21,7 @@ class oaeservice::deps::pp {
     'poppler-data',
     'ttfautohint'
   ]
-  package { $pdf2html_packages: ensure => install }
+  package { $pdf2html_packages: ensure => installed }
 
   # Download and unpack pdf2html archive
   archive { 'pdf2html':
