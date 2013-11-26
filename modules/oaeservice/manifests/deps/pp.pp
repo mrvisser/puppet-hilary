@@ -9,7 +9,7 @@ class oaeservice::deps::pp {
     'pdftk',
     'chrpath',
     'libfontconfig1-dev',
-    'fonts-international'
+    'fonts-international',
   ]
   package { $pp_packages: ensure => installed }
 
@@ -18,7 +18,9 @@ class oaeservice::deps::pp {
     'libjpeg62',
     'libopenjpeg2',
     'fontconfig',
-    'poppler-data'
+    'poppler-data',
+    'libcairo2',
+    'libfreetype6',
   ]
   package { $pdf2html_packages: ensure => installed }
 
@@ -27,7 +29,7 @@ class oaeservice::deps::pp {
     ensure        => present,
     url           => 'https://s3.amazonaws.com/oae-releases/pdf2html/pdf2html-0.10-bin.tar.gz',
     target        => '/',
-    digest_string => 'ba033d8576291be5d671cc694b639836',
+    digest_string => '062196f5ef8f818502f17ef448d3e162',
     digest_type   => 'md5',
     extension     => 'tar.gz'
   }
