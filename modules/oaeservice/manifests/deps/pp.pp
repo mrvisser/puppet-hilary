@@ -18,8 +18,7 @@ class oaeservice::deps::pp {
     'libjpeg62',
     'libopenjpeg2',
     'fontconfig',
-    'poppler-data',
-    'ttfautohint'
+    'poppler-data'
   ]
   package { $pdf2html_packages: ensure => installed }
 
